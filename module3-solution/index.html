@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en" ng-app="NarrowItDownApp" ng-cloak>
+  <head>
+    <title>Narrow Down Your Menu Choice</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/styles.css">
+  </head>
+<body>
+   <div class="container">
+       <div class="row" ng-controller="NarrowItDownController as nid">
+           <div class="col-sm-12">
+               <div class="well">
+                   <h1>Narrow Down Your Chinese Menu Choice</h1>
+                   <form class="form-inline">
+                       <div class="form-group">
+                           <input type="text" ng-model="nid.searchTerm" placeholder="search term" class="form-control">
+                       </div>
+                       <button type="submit" ng-click="nid.showListMenu()" class="btn btn-primary">Narrow It Down For Me!</button>
+                       <span class="loader" ng-if="nid.loader"></span>
+                   </form>
+               </div>
+
+               <p ng-if="nid.error">Nothing found</p>
+               <found-items on-remove="nid.removeMenuItem(index)" found-items="nid.found"></found-items>
+           </div>
+       </div>
+  </div>
+</body>
+</html>
